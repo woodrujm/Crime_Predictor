@@ -1,0 +1,203 @@
+new work FLOW
+
+categories care about
+ 'ASSAULT','MISSING PERSON','ROBBERY','BURGLARY','KIDNAPPING','SEX OFFENSES, FORCIBLE','ARSON'
+
+categories_to_delete =  ['DRUG/NARCOTIC', 'LARCENY/THEFT', 'OTHER OFFENSES','RECOVERED VEHICLE', 'NON-CRIMINAL','VANDALISM', 'DRIVING UNDER THE INFLUENCE', 'VEHICLE THEFT', 'WARRANTS', 'FORGERY/COUNTERFEITING', 'SUSPICIOUS OCC','FRAUD', 'DRUNKENNESS', 'PROSTITUTION','DISORDERLY CONDUCT', 'SECONDARY CODES', 'RUNAWAY', 'TRESPASS','STOLEN PROPERTY', 'LIQUOR LAWS','SUICIDE', 'BRIBERY', 'LOITERING','EXTORTION','EMBEZZLEMENT', 'FAMILY OFFENSES', 'BAD CHECKS','SEX OFFENSES, NON FORCIBLE', 'GAMBLING', 'PORNOGRAPHY/OBSCENE MAT','TREA']
+
+
+ resolutions_to_delete = ['UNFOUNDED','JUVENILE CITED','JUVENILE ADMONISHED','JUVENILE DIVERTED','CLEARED-CONTACT JUVENILE FOR MORE INFO','PROSECUTED FOR LESSER OFFENSE','DISTRICT ATTORNEY REFUSES TO PROSECUTE','NOT PROSECUTED','COMPLAINANT REFUSES TO PROSECUTE','JUVENILE BOOKED']
+ # dc.delete_rowvalues('resolution',resolutions_to_delete)
+
+
+dc.df = dc.df[dc.df.descript.str.contains('ARREST') == False]
+
+for date in ['year','month','day','hour']:
+    dc.time_column(date)
+dc.drop_columns('timestamp')
+
+# dc.make_binary('resolution', ['NONE'])
+# # write down which numbers coorespond to which
+# for column in ['pddistrict','category','dayofweek']:
+#     dc.create_dummies(column)
+
+ This brings the dataframe down to
+ Int64Index: 396424 entries, 4 to 2060481
+ Data columns (total 30 columns):
+ descript                           396424 non-null object
+ resolution                         396424 non-null int64
+ longitude                          396424 non-null float64
+ latitude                           396424 non-null float64
+ timestamp                          396424 non-null datetime64[ns]
+ pddistrict_BAYVIEW                 396424 non-null uint8
+ pddistrict_CENTRAL                 396424 non-null uint8
+ pddistrict_INGLESIDE               396424 non-null uint8
+ pddistrict_MISSION                 396424 non-null uint8
+ pddistrict_NORTHERN                396424 non-null uint8
+ pddistrict_PARK                    396424 non-null uint8
+ pddistrict_RICHMOND                396424 non-null uint8
+ pddistrict_SOUTHERN                396424 non-null uint8
+ pddistrict_TARAVAL                 396424 non-null uint8
+ pddistrict_TENDERLOIN              396424 non-null uint8
+ category_ARSON                     396424 non-null uint8
+ category_ASSAULT                   396424 non-null uint8
+ category_BURGLARY                  396424 non-null uint8
+ category_KIDNAPPING                396424 non-null uint8
+ category_MISSING PERSON            396424 non-null uint8
+ category_ROBBERY                   396424 non-null uint8
+ category_SEX OFFENSES, FORCIBLE    396424 non-null uint8
+ category_WEAPON LAWS               396424 non-null uint8
+ dayofweek_Friday                   396424 non-null uint8
+ dayofweek_Monday                   396424 non-null uint8
+ dayofweek_Saturday                 396424 non-null uint8
+ dayofweek_Sunday                   396424 non-null uint8
+ dayofweek_Thursday                 396424 non-null uint8
+ dayofweek_Tuesday                  396424 non-null uint8
+ dayofweek_Wednesday                396424 non-null uint8
+
+
+6 topics:
+ Reconstruction error: 0.001909
+ Topic 0:
+ battery dating relationship spouse sexual injuries police officer child abuse labor dispute executive resist threat
+ Topic 1:
+ entry burglary unlawful forcible residence apartment house store construction prowl hot attempted flat att constrt
+ Topic 2:
+ life threats teachers school employee public bring grounds possess threatening zone weapon possession firearm phone
+ Topic 3:
+ missing adult juvenile victim kidnapping elder embezzlement dependent theft abuse sodomy copulation oral attempted unlawful
+ Topic 4:
+ assault aggravated bodily force robbery street weapon deadly strongarm gun knife attempted armed rape dangerous
+ Topic 5:
+ person ammunition prohibited poss firearm loaded weapon addict alien convicted felon intent deadly gas tear
+
+dc.add_vectorized_matrix_to_df(tf)
+
+
+
+
+Base scores Serious Crime
+--------------
+LogisticRe :
+accuracy: 0.693227453434
+precision: 0.591832525523
+recall: 0.337936110702
+--------------
+RandomFore :
+accuracy: 0.756947107138
+precision: 0.703540370111
+recall: 0.502576181363
+
+--------------
+AdaBoostCl :
+accuracy: 0.703055314512
+precision: 0.619155195965
+recall: 0.346974827028
+
+--------------
+GradientBo :
+accuracy: 0.715708433395
+precision: 0.665258591163
+recall: 0.343117915501
+
+feature  importance
+27                             year     0.21653
+0                         longitude     0.11895
+1                          latitude     0.11601
+14                category_BURGLARY     0.08259
+16          category_MISSING PERSON     0.08213
+30                             hour     0.07107
+19             category_WEAPON LAWS     0.05272
+17                 category_ROBBERY     0.04242
+13                 category_ASSAULT     0.03664
+12                   category_ARSON     0.03430
+15              category_KIDNAPPING     0.02973
+11            pddistrict_TENDERLOIN     0.02795
+18  category_SEX OFFENSES, FORCIBLE     0.01580
+29                              day     0.01470
+5                pddistrict_MISSION     0.01351
+
+
+m = Models('serious_crime_with_vectors.csv', 'resolution')
+--------------
+LogisticRe :
+accuracy: 0.716989889613
+precision: 0.61574273307
+recall: 0.46338878257
+--------------
+RandomFore :
+accuracy: 0.733285573023
+precision: 0.655119861603
+recall: 0.468276166642
+
+--------------
+AdaBoostCl :
+accuracy: 0.746614735737
+precision: 0.666779699333
+recall: 0.52103636096
+--------------
+GradientBo :
+accuracy: 0.752366153411
+precision: 0.697356846647
+recall: 0.490151626675
+
+feature  importance
+27                      year     0.09358
+16   category_MISSING PERSON     0.07234
+187                  officer     0.06154
+153                   injury     0.05470
+66                  burglary     0.05469
+19      category_WEAPON LAWS     0.03292
+0                  longitude     0.03215
+223                  robbery     0.03161
+122                    false     0.02999
+140                 homicide     0.02660
+204                     poss     0.02636
+248                    store     0.02544
+261              threatening     0.02207
+199                 physical     0.02136
+39                aggravated     0.02119
+
+
+
+
+
+
+BASE MODEL WITH OUT DESCRIPT WITH MORE THAN JUST SERIOUS CRIMES
+--------------
+LogisticRe :
+accuracy: 0.815237031109
+precision: 0.747693544904
+recall: 0.717497088225
+--------------
+RandomFore :
+accuracy: 0.844637545486
+precision: 0.812183673144
+recall: 0.72697196836
+--------------
+AdaBoostCl :
+accuracy: 0.818188910195
+precision: 0.752540248579
+recall: 0.720776854426
+--------------
+GradientBo :
+accuracy: 0.824329221338
+precision: 0.773543405351
+recall: 0.708658154042
+
+feature  importance
+21    category_LARCENY/THEFT     0.08057
+16    category_DRUG/NARCOTIC     0.06957
+34         category_WARRANTS     0.06884
+43                      year     0.06881
+23   category_OTHER OFFENSES     0.06861
+0                  longitude     0.05911
+33    category_VEHICLE THEFT     0.05802
+24     category_PROSTITUTION     0.05554
+31   category_SUSPICIOUS OCC     0.05218
+29  category_STOLEN PROPERTY     0.05000
+22   category_MISSING PERSON     0.04863
+32        category_VANDALISM     0.04805
+35      category_WEAPON LAWS     0.04602
+15         category_BURGLARY     0.04412
+1                   latitude     0.03864

@@ -1,0 +1,1442 @@
+from sklearn.linear_model import LogisticRegression
+from sklearn.cross_validation import train_test_split
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+model = LogisticRegression(C=.01)
+dc.drop_columns('descript')
+y = dc.df.pop('resolution')
+
+
+scores = {}
+all_topics = {}
+for i in [1,3,5,7,10]:
+    w,topics = dc.reduce_with_NMF(tf,features,i*10)
+    w = pd.DataFrame(w)
+    df = dc.add_vectorized_matrix_to_df(w)
+    x = dc.df.values
+    X_train, X_test, y_train, y_test = train_test_split(x,y, random_state=42)
+    model.fit(X_train,y_train)
+    prediction = model.predict(X_test)
+    print 'accuracy:', accuracy_score(y_test,prediction)
+    print 'precision:', precision_score(y_test,prediction)
+    print 'recall:', recall_score(y_test,prediction)
+    print '\n\n'
+    scores[i] = [accuracy_score(y_test,prediction),precision_score(y_test,prediction),recall_score(y_test,prediction)]
+    all_topics[i] = topics
+
+    Reconstruction error: 0.000730
+    Topic 0:
+    locked auto grand theft unlocked vehicle pickpocket recovered petty attempted bicycle s
+    trip building pursesnatch embezzlement
+    Topic 1:
+    malicious mischief vandalism vehicles graffiti breaking windows suspect slashing tire c
+    ars buses adult bb street
+    Topic 2:
+    petty theft property building shoplifting prior lost bicycle unlocked receiving money k
+    nowledge receive personation pickpocket
+    Topic 3:
+    stolen automobile truck vehicle recovered plate lost receiving sf motorcycle outside li
+    cense property knowledge possession
+    Topic 4:
+    battery sexual spouse dating relationship officer police injuries enroute parole munici
+    pal code assault child permit
+    Topic 5:
+    suspended revoked drivers license plate lost stolen peddling tab grand entertainment en
+    couraging engaging explosive exploitation
+    Topic 6:
+    suspicious occurrence act female possible fired shots child possibly person sex package
+     solicits prostitution auto
+    Topic 7:
+    violation traffic probation parole order restraining code municipal police permit enroute officer stay away general
+    Topic 8:
+    burglary entry unlawful forcible apartment residence house store construction possessio
+    n prowl hot attempted tools flat
+    Topic 9:
+    person grand theft building suspicious possession pickpocket cocaine rock base sale par
+    aphernalia narcotics marijuana bicycle
+    accuracy: 0.871310151142
+    precision: 0.85624433409
+    recall: 0.762634959878
+
+
+Reconstruction error: 0.000355
+Topic 0:
+locked auto theft grand attempted possibly petty sex suspicious semi plate license regi
+ster offender specific
+Topic 1:
+malicious mischief vandalism vehicles graffiti breaking windows suspect tire slashing b
+uses cars bb adult tools
+Topic 2:
+petty theft prior unlocked bicycle auto strip property lost embezzlement employee compu
+ters phones cell elder
+Topic 3:
+automobile stolen motorcycle receiving sf knowledge outside possession miscellaneous ch
+ecks trailer electronics computer access card
+Topic 4:
+battery sexual relationship spouse dating officer police injuries municipal code child
+abuse general permit dispute
+Topic 5:
+revoked suspended drivers license peddling tab theft attempted evidence explosives enga
+ging explosive exploitation exhibiting executive
+Topic 6:
+suspicious occurrence act female possible shots fired child possibly sex package solici
+ts prostitution auto abuse
+Topic 7:
+traffic violation parole code municipal police permit general collision hit run park lo
+itering substance controlled
+Topic 8:
+burglary entry unlawful forcible apartment residence house store construction prowl hot
+ attempted flat tools att
+Topic 9:
+property receiving theft money personation knowledge false receive lost obtaining trick
+ fraudulent game stolen possession
+Topic 10:
+cocaine rock base sale possession substance controlled transportation manufacture vio s
+choolyard trafficking weapon act aerosol
+Topic 11:
+choolyard trafficking weapon act aerosol                                     [144/1966]Topic 11:
+threats life danger leading immoral teachers school grounds incident disrupts activitie
+s disturbance public bring possess
+Topic 12:
+person suspicious theft attempted ammunition prohibited poss locked loaded throw firewo
+rks crowd homicide weapon discharge
+Topic 13:
+vehicle recovered sf auto stolen outside attempted tampering unlocked arson registratio
+n evidence motorcycle false theft
+Topic 14:
+building theft attempted grand petty arson commercial construction vacant locked mischi
+ef malicious homicide meeting vehicle
+Topic 15:
+bodily force robbery attempted aggravated assault rape forcible chain residence store c
+arjacking bank officer locked
+Topic 16:
+enroute jurisdiction outside corrections department sf officer parole authority stolen
+adult marshall police recovered recklessly
+Topic 17:
+missing adult juvenile authority victim kidnapping elder dependent embezzlement enroute
+ abuse suspect sodomy caretaker oral
+Topic 18:
+paraphernalia narcotics possession tools heroin knowledge substance controlled receivin
+g sold used cocaine burglary premise maintaining
+Topic 19:
+robbery street strongarm gun attempted knife armed dangerous establishment commercial w
+eapon residence chain bank cars
+Topic 20:
+miscellaneous investigation state misdemeanor felony vehicle stolen labor code commit i
+ntent carrying judge official threat
+Topic 21:
+shoplifting theft attempted petty agent grand locked vehicle homicide simple forcible s
+uicide knife gun extortion
+Topic 22:
+truck stolen motorcycle receiving knowledge sf outside possession miscellaneous checks
+trailer electronics computer access card
+Topic 23:
+inflict cohabitee injury telegraph telephone lines collision hit run inflicting conditi
+on resulting traumatic child death
+Topic 24:
+investigative detention prostitution solicits act house visit apartment purpose loiteri
+ng false female personation receive money
+Topic 25:
+violation probation order restraining parole code municipal police officer stay away pe
+rmit dv general related
+Topic 26:
+possession marijuana sales amphetamine meth heroin substance sale controlled tools know
+ledge receiving burglary transportation stolen
+Topic 27:
+ledge receiving burglary transportation stolen                                [96/1966]Topic 27:
+assault aggravated weapon deadly knife gun carrying threating exhibiting manner conceal
+ed poss dangerous police officer
+Topic 28:
+lost plate license stolen motorcycle receiving sf peddling knowledge outside tab posses
+sion miscellaneous checks trailer
+Topic 29:
+grand theft pickpocket unlocked bicycle auto pursesnatch embezzlement strip employee pr
+operty cell computers phones dependent
+accuracy: 0.87101571819
+precision: 0.855412899917
+recall: 0.762670687179
+
+
+
+
+
+
+
+
+
+Reconstruction error: 0.000206
+Topic 0:
+locked auto theft attempted possibly sex suspicious semi plate license entry escape escapee explosive engaging
+Topic 1:
+mischief malicious vandalism graffiti suspect tire slashing buses cars tools street adult construction fictitious possession
+Topic 2:
+petty theft prior strip lost embezzlement locked vehicle phones computers cell employe
+e property dependent elder
+Topic 3:
+automobile stolen sf outside recovered miscellaneous checks trailer attempted electron
+ics computer card access cloned cellular
+Topic 4:
+ics computer card access cloned cellular                                     [96/1825]
+Topic 4:
+battery sexual spouse dating relationship injuries officer police child abuse dispute labor recklessly executive resist
+Topic 5:
+revoked suspended drivers license peddling tab theft attempted evidence explosives engaging explosive exploitation exhibiting executive
+Topic 6:
+suspicious occurrence female act possible fired shots child possibly sex package auto abuse physical stealing
+Topic 7:
+traffic violation permit collision run hit general loitering damage stay away park dv related injury
+Topic 8:
+unlawful burglary entry store residence prowl hot construction flat tools hotel room bldg constrt possession
+Topic 9:
+property receiving lost money receive theft knowledge obtaining game fraudulent trick petty attempted possession damage
+Topic 10:
+cocaine rock base sale possession transportation manufacture schoolyard vio trafficking weapon act assault aerosol purchase
+Topic 11:
+threats life danger leading immoral teachers school grounds incident disrupts activities disturbance public bring possess
+Topic 12:
+person suspicious attempted ammunition prohibited poss theft loaded fireworks crowd throw homicide discharge simple suicide
+Topic 13:
+vehicle recovered sf auto outside attempted stolen tampering arson registration evidence theft false embezzled use
+Topic 14:
+building theft attempted arson petty commercial construction vacant malicious mischief meeting homicide open possessing public
+Topic 15:
+force bodily robbery attempted rape chain aggravated store carjacking residence bank forcible officer police locked
+Topic 16:
+jurisdiction outside enroute sf officer authority stolen marshall adult recovered probation detention failure exposure explosives
+Topic 17:
+juvenile missing victim kidnapping intoxicated suspect indecent exposure escapee attempted violator mischief malicious parole related
+Topic 18:
+paraphernalia narcotics possession tools heroin cocaine burglary sold used knowledge p
+remise maintaining air loitering receiving
+Topic 19:
+robbery street strongarm gun armed knife attempted dangerous establishment commercial
+weapon residence chain cars buses
+Topic 20:
+weapon residence chain cars buses                                            [48/1825]
+Topic 20:
+miscellaneous investigation state misdemeanor felony vehicle stolen labor commit intent judge official carrying threat commission
+Topic 21:
+shoplifting attempted theft petty agent homicide simple suicide knife gun extortion arson comm hot prowl
+Topic 22:
+truck stolen sf outside recovered miscellaneous checks trailer electronics computer access card attempted cloned non
+Topic 23:
+inflict cohabitee injury telegraph telephone lines hit run collision condition traumatic resulting inflicting child death
+Topic 24:
+investigative detention graffiti tools mischief malicious burglary possession priors ft 100 highway government public transportation
+Topic 25:
+probation violation search permit general dv related loitering stay away park enroute massage federal statute
+Topic 26:
+marijuana possession sales heroin tools sale burglary cocaine transportation knowledge planting cultivating hallucinogenic air opiates
+Topic 27:
+weapon deadly aggravated carrying assault concealed threating exhibiting manner dangerous poss prohibited attempted intent officer
+Topic 28:
+lost plate license stolen peddling tab sf outside theft recovered miscellaneous checks trailer electronics computer
+Topic 29:
+unlocked auto strip theft recovered possibly sex suspicious offender register failure semi plate license specific
+Topic 30:
+order restraining violation away stay notification service dv related permit general protective emergency loitering park
+Topic 31:
+adult missing authority victim elder dependent embezzlement kidnapping abuse enroute suspect sodomy caretaker oral copulation
+Topic 32:
+prostitution solicits act visit house purpose loitering female child suspicious lewd engaging related conduct abuse
+Topic 33:
+windows breaking mischief malicious graffiti bb gun suspect tire slashing buses cars adult armed construction
+Topic 34:
+false personation receive money imprisonment registration evidence report obtaining ve
+hicle fraudulent trick game bomb cheat
+Topic 35:
+amphetamine meth possession sale heroin tools transportation burglary sales knowledge
+air graffiti gun receiving hallucinogenic
+Topic 36:
+air graffiti gun receiving hallucinogenic
+Topic 36:
+forcible burglary entry residence store construction attempted prowl hot tools flat att constrt bldg rape
+Topic 37:
+parole violation officer enroute police search permit general loitering recklessly executive evading resist threat violator
+Topic 38:
+grand theft pursesnatch embezzlement locked strip employee vehicle cell computers phones elder dependent library merchant
+Topic 39:
+phone calls obscene harassing threatening fictitious court dv booth 911 cellular non cloned dissuading witness
+Topic 40:
+house apartment entry burglary unlawful forcible visit att solicits prostitution car motor camper home inmate
+Topic 41:
+pickpocket theft grand attempted homicide simple gun suicide knife extortion arson hot prowl vehicle comm
+Topic 42:
+substance controlled sale possession loitering heroin tools violation substances firearm influence transportaion throwing possessing purpose
+Topic 43:
+code municipal violation police officer park permit general evading recklessly loitering interferring away stay assault
+Topic 44:
+bicycle attempted theft vehicle locked homicide evading police gun simple knife suicide serial number 50
+Topic 45:
+vehicles vandalism malicious mischief government transportation public transit acts place drugs influence cocaine infractions crimes
+Topic 46:
+stolen receiving motorcycle knowledge possession sf outside recovered strip tools checks miscellaneous trailer electronics computer
+Topic 47:
+conspiracy relationship spouse dating firearm poss loaded prior alien addict convicted felon prohibited discharge inhabited
+Topic 48:
+assault aggravated knife gun deadly bodily force simple chemicals caustic sexual child air police switchblade
+Topic 49:
+corrections department enroute officer authority police adult marshall probation evading recklessly executive resist threat interferring
+accuracy: 0.870504864435
+precision: 0.855594043094
+recall: 0.760698540182
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reconstruction error: 0.000072
+Topic 0:
+locked auto grand theft possibly sex suspicious semi aggravated officer entry escape exploitation engaging exhibiting
+Topic 1:
+vandalism mischief malicious suspect tire slashing buses cars street adult fictitious juvenile calls noxious chemical
+Topic 2:
+petty theft lost locked merchant library operated coin machine credit cards checks employee tab booth
+Topic 3:
+automobile stolen recovered miscellaneous checks trailer electronics computer card access cellular cloned non attempted bus
+Topic 4:
+battery officer police dispute labor sexual fraudulently estab explosives explosive ex
+ploitation exhibiting executive evidence evading
+Topic 5:
+revoked suspended drivers license tab plate theft stolen entry explosives explosive en
+tering encouraging exploitation exhibiting
+Topic 6:
+suspicious occurrence female possible shots fired act possibly child sex package auto
+purpose executive evidence
+Topic 7:
+traffic violation collision hit run permit general damage park loitering injury federa
+l statute massage entertainment
+Topic 8:
+unlawful entry burglary flat hotel room warehouse oral copulation store victim dissuad
+ing witness apt apartment
+Topic 9:
+grand theft pursesnatch embezzlement employee merchant library firearm prostitute cred
+it cards checks tab auto animals
+Topic 10:
+rock base cocaine possession schoolyard vio trafficking act human zone executive evide
+nce evading establishment estab
+Topic 11:
+threats life leading danger immoral teachers school grounds incident disrupts activiti
+es disturbance bring possess public
+Topic 12:
+person suspicious ammunition prohibited poss theft fireworks crowd throw attempted dis
+charge ward employment harassing penetrating
+Topic 13:
+recovered vehicle auto stolen home car motor camper mobile house trailer possibly bus
+suspicious semi
+recovered vehicle auto stolen home car motor camper mobile house trailer pos[240/1979]suspicious semi
+Topic 14:
+building theft commercial vacant mischief malicious meeting open possessing public construction weapon attempted bombing police
+Topic 15:
+force bodily robbery rape aggravated forcible chain carjacking resist executive threat mayhem agent bank estab
+Topic 16:
+jurisdiction outside enroute marshall parole probation zone establishment explosive exploitation exhibiting executive evidence evading escapee
+Topic 17:
+juvenile missing victim kidnapping intoxicated suspect exposure indecent escapee violator mischief malicious parole conviction engaging
+Topic 18:
+paraphernalia narcotics possession sold used premise maintaining knowledge air hallucinogenic opiates loitering use methadone firecrackers
+Topic 19:
+street strongarm robbery dangerous commercial establishment cars buses weapon trash placing mischief malicious att atm
+Topic 20:
+investigation miscellaneous felony stolen vehicle estab explosive exploitation exhibit
+ing executive evidence evading establishment escapes exposure
+Topic 21:
+shoplifting agent force attempted atm hire residence enroute engaging explosives explo
+sive exploitation exhibiting executive evidence
+Topic 22:
+truck stolen recovered miscellaneous checks trailer electronics computer card access c
+ellular non cloned attempted bus
+Topic 23:
+inflict cohabitee injury telegraph telephone lines run hit collision condition traumat
+ic inflicting resulting death resisting
+Topic 24:
+investigative detention commercial establishment strongarm robbery comm massage permit
+ hotel room violation taxi operating general
+Topic 25:
+probation violation search permit general park loitering enroute dv related massage st
+atute federal entertainment placard
+Topic 26:
+marijuana possession transportation cultivating planting furnishing air use encouragin
+g firecrackers switchblade checks minor rock base
+Topic 27:
+weapon deadly aggravated dangerous prohibited poss intent street mayhem officer bank c
+ommit manufacture tear gas
+Topic 28:
+lost plate license stolen tab miscellaneous checks trailer electronics computer card a
+ccess cloned cellular non
+Topic 29:
+unlocked auto theft possibly sex suspicious attempted semi aggravated officer plate es
+tablishment exhibiting executive evidence
+unlocked auto theft possibly sex suspicious attempted semi aggravated office[192/1979]tablishment exhibiting executive evidence
+Topic 30:
+restraining order violation notification service protective emergency permit general loitering park court statute federal massage
+Topic 31:
+adult missing victim suspect kidnapping dependent elder sodomy abuse copulation oral malicious mischief caretaker unlawful
+Topic 32:
+visit solicits prostitution house related conduct keeper inmate engaging lewd indecent exposure camper car motor
+Topic 33:
+breaking windows mischief malicious bb suspect slashing tire buses cars adult fictitious juvenile gun calls
+Topic 34:
+personation false receive money cheat crimes general report bomb alarm crime offense trafficking related infractions
+Topic 35:
+amphetamine meth possession transportation knowledge air sale opiates use hallucinogenic methadone firecrackers switchblade checks rock
+Topic 36:
+forcible entry burglary flat att rape warehouse hotel room constrt store attempted arm
+ed sharp instrument
+Topic 37:
+parole violation enroute permit general search loitering park violator massage statute
+ federal entertainment placard disabled
+Topic 38:
+pickpocket grand theft attempted dependent elder abuse adult 50 serial number known ph
+one juror escapee
+Topic 39:
+obscene calls phone fictitious court dv booth cellular cloned non mischief malicious o
+rder telecommunication clone
+Topic 40:
+apartment house att burglary entry unlawful car motor camper home keeper inmate safe a
+tm wife
+Topic 41:
+attempted locked theft homicide simple robbery suicide street extortion assault comm s
+tolen kidnapping victim ingestion
+Topic 42:
+controlled substance possession loitering violation substances influence transportaion
+ throwing possessing sale armed firearm injurious air
+Topic 43:
+code municipal violation police park loitering labor federal statute disabled placard
+grabbing protective emergency possess
+Topic 44:
+bicycle evading theft serial number 50 known police payment fare attempted railroad de
+ath plate satellite
+Topic 45:
+vehicles vandalism government transportation public graffiti tools transit 100 ft high
+way acts place drugs influence
+vehicles vandalism government transportation public graffiti tools transit 1[144/1979]way acts place drugs influence
+Topic 46:
+receiving stolen knowledge property possession miscellaneous checks trailer metals electronics computer access card non cellular
+Topic 47:
+conspiracy transportation cocaine marijuana public government meth amphetamine transit acts influence drugs place heroin opiates
+Topic 48:
+assault aggravated deadly bodily force simple chemicals caustic gun child commit manufacture knife administering drug
+Topic 49:
+department corrections enroute marshall parole probation rape forcible dangerous sharp instrument weapon armed spousal street
+Topic 50:
+store chain burglary construction safe robbery entry dangerous weapon materials hazardous knife permit explosives unauthorized
+Topic 51:
+spouse relationship dating battery transportation cocaine marijuana government meth amphetamine heroin opiates graffiti methadone hallucinogenic
+Topic 52:
+motorcycle stolen recovered checks miscellaneous strip trailer electronics computer ca
+rd access non cloned cellular attempted
+Topic 53:
+prior petty theft conviction exposure indecent victim elder dependent plate abuse tab
+license juvenile serial
+Topic 54:
+gun street robbery air carjacking homicide bb aggravated possession establishment stat
+ion bank service commercial machine
+Topic 55:
+loaded poss firearm prohibited use intent weapon ammunition city limits possession pos
+sessing discharging assault felony
+Topic 56:
+heroin possession transportation knowledge air use sale firecrackers switchblade check
+s rock base loaded electronics computer
+Topic 57:
+graffiti malicious mischief suspect tire slashing buses cars tools 100 ft highway gove
+rnment street transportation
+Topic 58:
+sale cocaine marijuana manufacture hallucinogenic weapon assault aerosol purchase cont
+ainer satellite opiates number telephone methadone
+Topic 59:
+officer enroute parole police executive resist threat probation recklessly evading mar
+shall force death peace interferring
+Topic 60:
+hot prowl burglary entry unlawful attempted safe bldg zone exploitation exhibiting exe
+cutive evidence evading establishment
+Topic 61:
+tools possession burglary priors vandalism graffiti safe knowledge air hallucinogenic
+opiates use att methadone firecrackers
+tools possession burglary priors vandalism graffiti safe knowledge air halluc[96/1979]opiates use att methadone firecrackers
+Topic 62:
+sf recovered outside vehicle stolen checks trailer electronics computer access card attempted cellular cloned non
+Topic 63:
+child abuse physical stealing pornography act desertion exploitation abandonment suspicious willful cruelty dependent elder condition
+Topic 64:
+knife street aggravated homicide robbery switchblade mayhem carjacking possession chain atm officer police cars buses
+Topic 65:
+runaway transportation cocaine marijuana public government meth amphetamine transit acts influence drugs place heroin opiates
+Topic 66:
+imprisonment false personation report bomb alarm crime cheat crimes general apparatus damage commission soliciting grabbing
+Topic 67:
+sales possession hallucinogenic amphetamine opiates methadone cocaine sidewalk permit opium vio schoolyard trafficking derivative act
+Topic 68:
+state misdemeanor miscellaneous felony stolen labor judge official commit intent threa
+t code commission vehicle looting
+Topic 69:
+loitering purpose prostitution sold used narcotics violation maintaining premise condu
+ct engaging related lewd indecent exposure
+Topic 70:
+vehicle locked theft embezzled use recovered stolen occupied throwing shooting miscell
+aneous evading loaded alcohol open
+Topic 71:
+act solicits prostitution female suspicious lewd child engaging conduct related vio sc
+hoolyard exposure indecent trafficking
+Topic 72:
+sexual child abuse administering drug commit assault intent felony mayhem specific bat
+tery offenses rape carrying
+Topic 73:
+property lost receive money receiving damage hit collision run theft disturbance schoo
+l fraudulently labor traffic
+Topic 74:
+carrying concealed weapon dangerous loitering prohibited convicted felon street commit
+ intent homicide poss rape felony
+Topic 75:
+arson commercial dwelling inhabited establishment vehicle vacant strongarm attempted t
+errorizing great explosive device injury massage
+Topic 76:
+embezzlement elder dependent employee abuse adult theft caretaker general leased publi
+c agents brookers private school
+Topic 77:
+police general permit officer evading violation recklessly operating interferring taxi
+ assault cheat crimes animals neglect
+police general permit officer evading violation recklessly operating interfer[48/1979] assault cheat crimes animals neglect
+Topic 78:
+residence constrt burglary entry robbery safe attempted gun knife explosives destruction illegal transportaion insured defraud
+Topic 79:
+manner exhibiting threating deadly weapon grossly negligent discharging firearm firecrackers aircraft selling bldg robbery assault
+Topic 80:
+locked auto petty theft possibly sex suspicious semi aggravated officer entertainment entry exploitation exhibiting executive
+Topic 81:
+harassing calls phone fictitious 911 court dv booth cellular non cloned mischief malicious order clone
+Topic 82:
+stalking flat safe construction driving reckless drag racing possible fired shots occurrence entry evading establishment
+Topic 83:
+construction bldg att apt store burglary forcible mischief malicious aircraft discharging occupied atm firearm force
+Topic 84:
+cocaine possession transportation knowledge air opiates hallucinogenic use methadone c
+hecks firecrackers switchblade opium loaded electronics
+Topic 85:
+tampering vehicle marks mail firearm damage box attempted destruction possessing alter
+ed identification grossly negligent armed
+Topic 86:
+registration evidence false vehicle report personation bomb crime alarm cheat crimes g
+eneral transfer withhold conceal
+Topic 87:
+obtaining fraudulent game trick money receive fraudulently labor property offense traf
+ficking related narcotics laundering dispute
+Topic 88:
+dwelling inhabited discharge firearm occupied shooting limits city negligent dischargi
+ng possessing grossly aircraft altered bldg
+Topic 89:
+threatening phone dissuading witness public school employee unlawful victim booth non
+cloned cellular fictitious transit
+Topic 90:
+sex failure register offender possibly suspicious provide light red heed siren auto fe
+male addict child
+Topic 91:
+robbery armed dangerous establishment commercial weapon chain bank gun possessing comm
+ kidnapping atm station service
+Topic 92:
+cell phones computers theft merchant library checks locked credit cards tab elder depe
+ndent animals abuse
+nstruction strongarm violation permit forcible
+Topic 93:
+sidewalks obstructions streets hotel room safe heating commercial establishment apt construction strongarm violation permit forcible
+Topic 94:
+injuries battery dangerous weapon street homicide buses cars bank carjacking chain mischief malicious trash placing
+Topic 95:
+authority adult enroute victim kidnapping suspect sodomy oral copulation marshall dependent elder witness dissuading abuse
+Topic 96:
+peddling license tab plate theft library merchant credit cards stolen locked animals services 50 utility
+Topic 97:
+felon convicted addict alien poss firearm prohibited weapon ammunition intent assault harbor aid tear gas
+Topic 98:
+strip auto motorcycle possibly sex suspicious attempted female semi act package aggravated officer child police
+Topic 99:
+stay away related order dv violation indecent exposure engaging lewd conduct permit general court protective
+accuracy: 0.871451076316
+precision: 0.85626889247
+recall: 0.763085123867
+
+
+
+Topic 0:
+locked auto theft grand serial number known 50 utility explosives explosive exploitation exhibiting executive evidenc
+e
+Topic 1:
+vandalism mischief malicious noxious chemical adult enroute evidence exposure explosives explosive exploitation exhib
+iting executive evading
+Topic 2:
+petty theft property operated coin employee utility motorcycle establishment exploitation exhibiting executive eviden
+ce evading escapes
+Topic 3:
+automobile stolen vehicle lost metals trailer cellular non cloned attempted entering explosives explosive enroute exp
+loitation
+Topic 4:
+battery dispute labor officer sexual police estab explosive exploitation exhibiting executive evidence evading establ
+ishment escapee
+Topic 5:
+revoked drivers suspended license plate fireman fired flat exploitation exhibiting executive evidence evading establi
+shment estab
+Topic 6:
+occurrence suspicious possibly auto zone explosives explosive exploitation exhibiting executive evidence evading esta
+blishment estab extortion
+Topic 7:
+traffic violation transfer restrictions injury court injunction gang civil curfew heating dv run collision hit
+Topic 8:
+burglary entry attempted priors zone evading exposure explosives explosive exploitation exhibiting executive evidence
+ estab establishment
+Topic 9:
+grand theft firearm 12 months fiduciary 400 employee property zone evading explosive exploitation exhibiting executiv
+e
+Topic 10:
+rock base cocaine possession vio schoolyard trafficking firearms escape evading fired establishment estab fireman esc
+apes
+Topic 11:
+threats life teachers explosives explosive exploitation exhibiting executive evidence evading establishment estab zon
+e escapes escapee
+threats life teachers explosives explosive exploitation exhibiting executive evidence evading establishmen[1268/1826]
+e escapes escapee
+Topic 12:
+person fireworks throw crowd discharge prohibited grand employment ward harassing suspicious theft attempted estab li
+mits
+Topic 13:
+recovered vehicle stolen mobile home shooting firearm loaded throwing theft establishment estab zone escapes evidence
+Topic 14:
+building theft vacant meeting open public weapon bombing commercial construction serial number attempted known 50
+Topic 15:
+bodily force aggravated assault officer police administering drug rape possession evidence explosives explosive explo
+itation exhibiting
+Topic 16:
+jurisdiction outside enroute officer estab exposure explosives explosive exploitation exhibiting executive evidence e
+vading establishment zone
+Topic 17:
+missing juvenile zone escapes explosives explosive exploitation exhibiting executive evidence evading establishment e
+stab escapee extortion
+Topic 18:
+paraphernalia narcotics possession offense addict register trafficking related money failure machine firecrackers mas
+k wearing barbituates
+Topic 19:
+strongarm street robbery commercial asphyxiation zone estab explosive exploitation exhibiting executive evidence evad
+ing establishment escape
+Topic 20:
+investigation miscellaneous zone estab explosives explosive exploitation exhibiting executive evidence evading establ
+ishment escapes extortion escapee
+Topic 21:
+shoplifting theft agent attempted zone establishment explosive exploitation exhibiting executive evidence evading est
+ab encounter escapes
+Topic 22:
+truck stolen sound loudspeaker permit violation lost metals exploitation exhibiting executive evidence evading establ
+ishment estab
+truck stolen sound loudspeaker permit violation lost metals exploitation exhibiting executive evidence eva[1237/1826]
+ishment estab
+Topic 23:
+cohabitee inflict injury collision hit run great evading hate rights death civil incl traffic bridges
+Topic 24:
+investigative detention zone establishment exposure explosives explosive exploitation exhibiting executive evidence e
+vading estab failure escapes
+Topic 25:
+probation violation dv transfer restrictions gang injunction civil curfew heating hotel labor registration state enco
+unter
+Topic 26:
+marijuana possession furnishing encouraging use sales transportation escape executive evidence evading establishment
+estab escapes escapee
+Topic 27:
+deadly weapon estab meeting attempting taking open poss mayhem violate 136 pc peace transfer officer
+Topic 28:
+plate lost license stolen flammable fireworks explosive exploitation exhibiting executive evidence evading establishm
+ent estab escapes
+Topic 29:
+unlocked auto theft grand vehicle serial number known 50 utility escapee escapes explosives explosive exploitation
+Topic 30:
+restraining order violation court dv calls transfer phone restrictions injunction gang civil curfew heating sidewalk
+Topic 31:
+adult missing victim zone establishment exposure explosives explosive exploitation exhibiting executive evidence evad
+ing estab failure
+Topic 32:
+solicits prostitution visit act zone extortion explosives explosive exploitation exhibiting executive evidence evadin
+g establishment estab
+Topic 33:
+breaking windows mischief malicious adult establishment exposure explosives explosive exploitation exhibiting executi
+ve evidence evading zone
+Topic 34:
+personation false cheat crimes receive property fraudulent game trick estab exploitation exhibiting executive evidenc
+Topic 34:                                                                                                 [1206/1826]
+personation false cheat crimes receive property fraudulent game trick estab exploitation exhibiting executive evidenc
+e evading
+Topic 35:
+meth amphetamine possession encourage transportation minor use sale zone escapee executive evidence evading establish
+ment estab
+Topic 36:
+forcible burglary sharp rape apt armed encouraging establishment explosives explosive exploitation exhibiting executi
+ve evidence evading
+Topic 37:
+parole violation search violator transfer restrictions court injunction gang civil curfew heating dv labor hotel
+Topic 38:
+pickpocket grand theft serial number attempted known 50 utility estab arson exhibiting executive exploitation explosi
+ve
+Topic 39:
+obscene calls phone court booth dv order telecommunication clone incl violation services petty exhibiting executive
+Topic 40:
+apartment house entry burglary inmate keeper wife unlawful keeping disorderly placing evading establishment exhibitin
+g evidence
+Topic 41:
+attempted suicide comm unlocked vehicle stolen officers gov murder victim mayhem operated coin bodily burglary
+Topic 42:
+substance controlled possession violation firearm encourage area injurious possessing offensive minor water dump haza
+rdous transportaion
+Topic 43:
+municipal code violation labor grabbing state possess transfer device use restrictions court gang injunction civil
+Topic 44:
+bicycle theft evading serial number 50 known attempted utility estab laceration jumping strangulation sharp explosive
+Topic 45:
+vehicles government public graffiti zone extortion explosives explosive exploitation exhibiting executive evidence ev
+ading establishment estab
+Topic 46:
+vehicles malicious mischief railroad fare payment drives track evading overcharging accepting conceal withhold railro
+Topic 46:                                                                                                 [1175/1826]
+vehicles malicious mischief railroad fare payment drives track evading overcharging accepting conceal withhold railro
+ads bridges
+Topic 47:
+conspiracy zone escapes explosives explosive exploitation exhibiting executive evidence evading establishment estab e
+scapee extortion escape
+Topic 48:
+aggravated assault deadly semi child sniping sexual gun manufacture knife sale force judge emergency executive
+Topic 49:
+store burglary entry materials hazardous permit depositing unauthorized locatn dump spill load oil sewers water
+Topic 50:
+spouse dating relationship battery mail damage box destruction explosives parking meters apparatus civil hate rights
+Topic 51:
+relationship spouse dating battery disturbance school enroute estab explosives explosive exploitation exhibiting exec
+utive evidence evading
+Topic 52:
+stolen motorcycle vehicle lost metals estab explosive exploitation exhibiting executive evidence evading establishmen
+t escapes exposure
+Topic 53:
+prior petty theft conviction zone estab exploitation exhibiting executive evidence evading establishment escapes empl
+oyment escapee
+Topic 54:
+gun machine comm possession establishment atm hire rob mayhem officer carjacking residence police aggravated homicide
+Topic 55:
+loaded poss firearm bomb silencer felony grossly manner zone exploitation exhibiting executive evidence evading estab
+Topic 56:
+heroin possession encourage minor use transportation sale priors escapee executive evidence evading establishment est
+ab escapes
+Topic 57:
+graffiti mischief malicious government public adult zone evading explosive exploitation exhibiting executive evidence
+ establishment exposure
+Topic 58:
+property damage fraudulently obtaining money stolen petty attempted explosive exploitation exhibiting executive evide
+Topic 58:                                                                                                 [1144/1826]
+property damage fraudulently obtaining money stolen petty attempted explosive exploitation exhibiting executive evide
+nce evading establishment
+Topic 59:
+officer probation interferring recklessly death peace attempting taking executive bribery resisting injury police sni
+ping weapon
+Topic 60:
+prowl hot burglary entry unlawful attempted zone explosives explosive exploitation exhibiting executive evidence evad
+ing escapes
+Topic 61:
+tools burglary possession machine firecrackers device mask wearing barbituates destructive materials lab apparatus dr
+ug penetrating
+Topic 62:
+sf outside stolen recovered vehicle lost encourage escapes exhibiting executive evidence evading establishment estab
+escapee
+Topic 63:
+physical abuse child exploitation estab explosives explosive exhibiting executive evidence evading establishment zone
+ extortion escapes
+Topic 64:
+knife comm mayhem atm establishment officer robbery aggravated police carjacking residence homicide assault fight ent
+ry
+Topic 65:
+runaway zone escapes explosive exploitation exhibiting executive evidence evading establishment estab escapee exposur
+e escape entry
+Topic 66:
+imprisonment false report receive zone escapee exploitation exhibiting executive evidence evading establishment estab
+ escapes entry
+Topic 67:
+sales possession schoolyard vio sidewalk permit trafficking base barbituates violation derivative hallucinogenic opia
+tes establishment evidence
+Topic 68:
+misdemeanor state miscellaneous labor judge official threat code looting emergency violation executive estab exhibiti
+ng exploitation
+misdemeanor state miscellaneous labor judge official threat code looting emergency violation executive est[1113/1826]
+ng exploitation
+Topic 69:
+purpose loitering prostitution disguise mask wearing purchase female concealed weapon unlawful apparel opposite decei
+ve escapes
+Topic 70:
+vehicle miscellaneous evading track drives railroad aircraft rental return hire discharging unlocked occupied grabbin
+g alcohol
+Topic 71:
+loitering violation concealed weapon transfer curfew restrictions heating gang injunction civil hotel labor encounter
+ studio
+Topic 72:
+sexual abuse administering drug assault establishment explosives explosive exploitation exhibiting executive evidence
+ evading zone estab
+Topic 73:
+fraudulent game trick obtaining money property offense trafficking related narcotics laundering exploitation exhibiti
+ng executive evidence
+Topic 74:
+concealed carrying weapon loitering convicted commit intent loaded felony meeting attempting taking open peace hire
+Topic 75:
+arson vacant terrorizing great building injury bodily explosive vehicle device commercial dwelling inhabited marking
+private
+Topic 76:
+dependent elder abuse embezzlement adult exploitation victim establishment explosives explosive exhibiting executive
+evidence evading escapes
+Topic 77:
+general permit violation animals bigamy incest nature weapon entry evading explosives explosive exploitation engaging
+ exhibiting
+Topic 78:
+residence entry burglary unlawful dangerous explosives robbery gun attempted knife exploitation exhibiting executive
+evidence evading
+Topic 79:
+street robbery dangerous rob deadly trash gun attempted knife enroute estab exhibiting encourage executive evidence
+Topic 79:                                                                                                 [1082/1826]
+street robbery dangerous rob deadly trash gun attempted knife enroute estab exhibiting encourage executive evidence
+Topic 80:
+strip auto petty grand theft attempted motorcycle zone evidence explosives explosive exploitation exhibiting executiv
+e establishment
+Topic 81:
+harassing calls phone 911 court booth dv order clone telecommunication incl violation services ward employment
+Topic 82:
+stalking zone escapes explosives explosive exploitation exhibiting executive evidence evading establishment estab esc
+apee extortion escape
+Topic 83:
+cocaine possession schoolyard vio encouraging trafficking minor use base transportation priors executive evidence eva
+ding establishment
+Topic 84:
+construction burglary hotel bldg building apt zone evading exposure explosives explosive exploitation exhibiting exec
+utive evidence
+Topic 85:
+threating exhibiting manner deadly weapon grossly firearm zone exploitation executive evidence evading establishment
+estab escapee
+Topic 86:
+tampering marks vehicle mail box destruction damage entertainment evidence exposure explosives engaging explosive exp
+loitation enroute
+Topic 87:
+stay away order violation dv transfer restrictions injunction gang civil curfew heating sidewalk labor hotel
+Topic 88:
+inhabited dwelling shooting discharge firearm arson vehicle estab explosive exploitation exhibiting executive evidenc
+e evading establishment
+Topic 89:
+threatening phone public booth school court telecommunication clone incl dv services order violation petty zone
+Topic 90:
+armed commission felony firearm sharp dangerous possessing forcible substance rape controlled attempted apartment saf
+e petty
+Topic 91:
+Topic 91:
+register offender failure sex addict narcotics specific offenses rental return near presence commit grounds school
+Topic 92:
+phones computers cell theft serial number known 50 utility attempted restrictions transfer violation curfew heating
+Topic 93:
+injuries battery zone failure exposure explosives explosive exploitation exhibiting executive evidence evading establ
+ishment estab escapes
+Topic 94:
+streets sidewalks obstructions zone estab explosive exploitation exhibiting executive evidence evading establishment
+escapes exposure escapee
+Topic 95:
+authority adult enroute victim zone evading exposure explosives explosive exploitation exhibiting executive evidence
+establishment failure
+Topic 96:
+lost property theft petty grand serial number known 50 utility trick game fraudulent entry establishment
+Topic 97:
+addict alien convicted felon poss firearm register narcotics failure bomb silencer grossly manner exhibiting executiv
+e
+Topic 98:
+pursesnatch grand theft serial number known 50 attempted utility estab laceration jumping strangulation arson exploit
+ation
+Topic 99:
+exposure indecent conviction related victim prior exhibiting executive evidence evading establishment estab escapes e
+scapee explosive
+Topic 100:
+robbery kidnapping hire bodily establishment residence zone estab explosive exploitation exhibiting executive evidenc
+e evading escapes
+Topic 101:
+transportation government public graffiti cocaine marijuana opium heroin amphetamine meth hallucinogenic opiates esca
+pes escapee explosive
+Topic 102:
+kidnapping victim adult altered carrying felony commit loaded intent commission silencer firearm identification gross
+Topic 102:                                                                                                [1020/1826]
+kidnapping victim adult altered carrying felony commit loaded intent commission silencer firearm identification gross
+ly manner
+Topic 103:
+receive money property offense trafficking personation related false narcotics laundering enroute encouraging exhibit
+ing executive evidence
+Topic 104:
+flat burglary entry unlawful attempted zone establishment explosives explosive exploitation exhibiting executive evid
+ence evading escapes
+Topic 105:
+suspicious child possibly person auto establishment explosive exploitation exhibiting executive evidence evading zone
+ exposure estab
+Topic 106:
+rape spousal sharp forcible bodily force dangerous armed gun enroute evading explosive exploitation exhibiting execut
+ive
+Topic 107:
+prohibited poss weapon bomb meeting attempting taking silencer transfer open peace public hire registration violation
+Topic 108:
+auto locked theft petty zone establishment explosive exploitation exhibiting executive evidence evading estab exposur
+e escapes
+Topic 109:
+peddling license plate exploitation abuse enroute entering encourage explosives explosive encouraging exhibiting exec
+utive evidence evading
+Topic 110:
+possession flammable opium explosive firearm rock loaded stolen manufacture cloned cellular non vehicle receiving kno
+wledge
+Topic 111:
+premise maintaining sold used narcotics offense addict register trafficking related money failure entertainment evadi
+ng exploitation
+Topic 112:
+hotel room burglary entry heating unlawful violation escapes exhibiting executive evidence evading establishment esta
+b zone
+Topic 113:
+Topic 113:
+knowledge receiving stolen property estab explosives explosive exploitation exhibiting executive evidence evading est
+ablishment escapee escapes
+Topic 114:
+receiving stolen metals product purchasing tobacco minor escapes exploitation exhibiting executive evidence evading e
+stablishment estab
+Topic 115:
+driving reckless injury drag racing great railroad railroads bridges hate rights bodily threat civil escapes
+Topic 116:
+employee embezzlement public school threatening suspension dismissal campus entering student grand petty exhibiting e
+xecutive evidence
+Topic 117:
+telephone lines telegraph injury electrical interfering satellite number gas collision hit run great evading rights
+Topic 118:
+library merchant theft serial number known 50 tab utility attempted entertainment enroute explosives engaging explosi
+ve
+Topic 119:
+acts transit public government justice presence offenses drunk trespass school immoral threatening meeting official p
+rivate
+Topic 120:
+robbery armed gun force att knife estab explosive exploitation exhibiting executive evidence evading establishment es
+capes
+Topic 121:
+att burglary hire force animal roll drunk house apartment attention fighting apt owning fight attending
+Topic 122:
+female act purchase purpose suspicious aerosol prostitution zone establishment explosive exploitation exhibiting exec
+utive evidence evading
+Topic 123:
+tire slashing malicious mischief adult furnishing zone explosive exploitation exhibiting executive evidence evading e
+stablishment escapee
+Topic 124:
+checks credit cards establishment exposure explosives explosive exploitation exhibiting executive evidence evading es
+Topic 124:                                                                                                 [958/1826]
+checks credit cards establishment exposure explosives explosive exploitation exhibiting executive evidence evading es
+tab failure escapes
+Topic 125:
+caustic chemicals assault chemical noxious vandalism escape entry failure enroute extortion exposure explosives enter
+ing explosive
+Topic 126:
+limits city discharge firearm altered mask wearing grossly manner identification inhabited dwelling controlled execut
+ive exhibiting
+Topic 127:
+incident grounds school disturbance public trespass zone threatening near presence drug offender entering dismissal c
+ampus
+Topic 128:
+park code violation labor grabbing state possess transfer device use restrictions court injunction gang civil
+Topic 129:
+possible shots fired occurrence suspicious act animal attention fighting proper care fight owning attending dog
+Topic 130:
+immoral danger leading life presence drunk acts near offender drug grounds evidence explosive exploitation exhibiting
+Topic 131:
+stealing child pornography physical willful sexual ward employment harassing firearms entry evidence evading establis
+hment estab
+Topic 132:
+carjacking kidnapping bodily dangerous gun knife establishment exposure explosives explosive exploitation exhibiting
+executive evidence evading
+Topic 133:
+hit run collision damage traffic injury mail box destruction meters parking apparatus rights hate civil
+Topic 134:
+constrt burglary residence escapes explosives explosive exploitation exhibiting executive evidence evading establishm
+ent estab zone extortion
+Topic 135:
+suicide ingestion firearms asphyxiation drowning seizing scene dv zone escapee executive evidence evading establishme
+nt estab
+Topic 136:
+nt estab                                                                                                   [927/1826]
+Topic 136:
+defrauding driver taxi overcharging fare payment railroad track drives conceal withhold accepting railroads bridges e
+vidence
+Topic 137:
+motorcycle recovered strip grand theft car motor camper pursesnatch pickpocket destruction exposure explosives explos
+ive exploitation
+Topic 138:
+bomb report poss false animal attention fighting proper care owning fight attending dog cat abandonment
+Topic 139:
+search probation parole violator zone estab explosive exploitation exhibiting executive evidence evading establishmen
+t escapes exposure
+Topic 140:
+chain store robbery dangerous bodily deadly gun construction knife safe exhibiting executive evidence evading establi
+shment
+Topic 141:
+extortion attempted estab laceration jumping strangulation entering evading exposure explosives explosive exploitatio
+n exhibiting executive evidence
+Topic 142:
+mischief malicious fictitious building construction suspect juvenile zone explosive exploitation exhibiting executive
+ evidence evading establishment
+Topic 143:
+homicide attempted explosives sniping dangerous destruction bodily illegal gun mail insurer defraud insured knife lac
+eration
+Topic 144:
+drugs place public influence visiting smoked used government justice offenses trespass school threatening meeting off
+icial
+Topic 145:
+delinquency contributing minor encouraging tobacco use encourage products destitute selling barbituates purchasing pr
+oduct soliciting felony
+Topic 146:
+oral copulation victim adult soliciting crime encouraging barbituates minor use encourage grabbing product purchasing
+ destitute
+ oral copulation victim adult soliciting crime encouraging barbituates minor use encourage grabbing product [896/1826]
+  destitute
+ Topic 147:
+ suspect mischief malicious adult juvenile zone establishment explosives explosive exploitation exhibiting executive e
+ vidence evading estab
+ Topic 148:
+ evading recklessly police fare payment railroad death officer injury track drives bicycle overcharging conceal withho
+ ld
+ Topic 149:
+ executive threat resist force officer bribery judge official credible 30 days trespass rights hate civil
+ Topic 150:
+ air gun possession estab explosives explosive exploitation exhibiting executive evidence evading establishment zone e
+ xposure escapee
+ Topic 151:
+ hallucinogenic possession encourage minor use transportation sale zone escapee executive evidence evading establishme
+ nt estab escapes
+ Topic 152:
+ warehouse burglary explosives destruction mail damage box illegal insurer insured defraud meters parking constrt civi
+ l
+ Topic 153:
+ control parental minor zone establishment explosives explosive exploitation exhibiting executive evidence evading est
+ ab extortion escapes
+ Topic 154:
+ animals cruelty general poisoning engaging establishment explosives explosive exploitation exhibiting executive encou
+ rage evidence evading estab
+ Topic 155:
+ witness dissuading victim adult zone evading exposure explosives explosive exploitation exhibiting executive evidence
+  establishment failure
+ Topic 156:
+ warehouse entry burglary leave refusal bus offender grounds school sex crime commit attempted identify recovered
+ Topic 157:
+ negligent discharging grossly manner selling firearm aircraft area injurious occupied lasers lights offensive public
+ substance
+ negligent discharging grossly manner selling firearm aircraft area injurious occupied lasers lights offensi[865/1826]
+ substance
+ Topic 158:
+ unknown complaint exploitation abuse offenses justice public specific government sex trespass school threatening graf
+ fiti private
+ Topic 159:
+ buses cars street mischief malicious rob trash adult deadly bank bodily evidence explosive exploitation exhibiting
+ Topic 160:
+ bldg aircraft discharging occupied entry construction lights lasers area injurious executive exposure explosives enga
+ ging explosive
+ Topic 161:
+ prostitution related conduct inmate keeper act house wife placing purchase female aerosol encouraging encounter execu
+ tive
+ Topic 162:
+ occurence unusual mail damage box destruction explosives parking meters apparatus civil rights hate incl threat
+ Topic 163:
+ opiates encourage minor use transportation sales sale escape executive evidence evading establishment estab escapes e
+ scapee
+ Topic 164:
+ assault poisoning chemicals specific transfer offenses sex rob registration deadly officers murder gov poss officer
+ Topic 165:
+ simple assault attempted administering drug estab manufacture laceration offender jumping strangulation dangerous sal
+ e entry enroute
+ Topic 166:
+ enroute probation firearms seizing scene escapee exhibiting executive evidence evading establishment estab escapes en
+ try escape
+ Topic 167:
+ marshall enroute asphyxiation attempted commission felony soliciting crime loaded carrying intent commit minor estab
+ destitute
+ Topic 168:
+ safe burglary hotel apartment explosives destruction flat illegal escapes exploitation exhibiting executive evidence
+ evading establishment
+ Topic 169:
+ evading establishment                                                                                      [834/1826]
+ Topic 169:
+ felony state miscellaneous commission loaded carrying commit intent labor judge official threat code firearm looting
+ Topic 170:
+ sodomy victim adult establishment exposure explosives explosive exploitation exhibiting executive evidence evading es
+ tab failure escapes
+ Topic 171:
+ used sold narcotics loitering visiting smoked drugs offense addict register trafficking related money failure injury
+ Topic 172:
+ annoy molest children neglect general victim hazardous materials unauthorized depositing locatn dumping substances vi
+ o schoolyard
+ Topic 173:
+ petty theft auto official employee collector booth zone evading explosives explosive exploitation exhibiting executiv
+ e evidence
+ Topic 174:
+ bank robbery rob dangerous deadly gun knife zone estab exploitation exhibiting executive evidence evading establishme
+ nt
+ Topic 175:
+ soliciting aggressive commission crime minor felony commit zone evading explosive exploitation exhibiting executive e
+ vidence estab
+ Topic 176:
+ occupied shooting vehicle aircraft discharging lasers lights area injurious public escapee evidence explosives explos
+ ive exploitation
+ Topic 177:
+ condition traumatic resulting inflicting child injury hit run collision pornography great evading hate rights death
+ Topic 178:
+ bribery witnesses executive officer booth phone petty zone establishment exposure explosives explosive exploitation e
+ xhibiting evidence
+ Topic 179:
+ substances influence controlled depositing hazardous materials unauthorized locatn spill location load sewers oil dum
+ p roadway
+ Topic 180:
+ trafficking human offense schoolyard vio related money narcotics base sales addict cocaine register laundering spousa
+ Topic 180:                                                                                                 [803/1826]
+ trafficking human offense schoolyard vio related money narcotics base sales addict cocaine register laundering spousa
+ l
+ Topic 181:
+ embezzled vehicle shooting firearm stolen loaded theft throwing attempted police alien felon convicted recklessly eva
+ ding
+ Topic 182:
+ activities disrupts school disturbance public trespass zone threatening dismissal entering campus student suspension
+ near presence
+ Topic 183:
+ grand theft auto leased brookers agents private collector booth carrier official agricultural phone embezzlement coin
+ Topic 184:
+ amphetamine possession encourage minor use transportation sale escapee exhibiting executive evidence evading establis
+ hment estab escapes
+ Topic 185:
+ machine operated coin possession petty grand entertainment evading explosive exploitation exhibiting executive engagi
+ ng evidence establishment
+ Topic 186:
+ object forced penetration freight passenger common carrier throwing escape entertainment explosive enroute exploitati
+ on entering exhibiting
+ Topic 187:
+ possibly sex suspicious auto specific offenses commit justice deceive opposite apparel wearing grounds entry public
+ Topic 188:
+ tools graffiti vandalism government public noxious chemical explosives explosive exploitation exhibiting executive ev
+ idence evading establishment
+ Topic 189:
+ lewd engaging conduct related offense money trafficking narcotics solicits estab exploitation exhibiting executive ev
+ idence evading
+ Topic 190:
+ sale satellite number aerosol purchase telephone marker paint display spray pens container cocaine manufacture contro
+ lled
+ Topic 191:
+ use loaded firearm encouraging minor encourage grabbing vehicle felony carrying possess barbituates loud speakers int
+ Topic 191:                                                                                                 [772/1826]
+ use loaded firearm encouraging minor encourage grabbing vehicle felony carrying possess barbituates loud speakers int
+ ent
+ Topic 192:
+ speeding mail damage box destruction explosives parking meters apparatus civil hate rights incl threat defraud
+ Topic 193:
+ alter forge prescription 4390 vin remove switch schoolyard vio trafficking offense related base money narcotics
+ Topic 194:
+ methadone transportation sales sale exhibiting executive evidence evading establishment estab escapes escapee escape
+ zone explosive
+ Topic 195:
+ cheat crimes general animals rights hate incl civil damage threat injury incest nature bigamy telecommunication
+ Topic 196:
+ mayhem offenses specific sex commit justice public bodily gun exhibiting exploitation estab executive evidence evadin
+ g
+ Topic 197:
+ device explosive located flammable terrorizing grabbing possess destructive use materials code possession hazardous m
+ arking private
+ Topic 198:
+ abandonment neglect children general animals cat dog bigamy nature incest crime establishment explosives entertainmen
+ t failure
+ Topic 199:
+ furnishing selling tobacco products minor discharging product purchasing encouraging use encourage restricted glue ju
+ veniles destitute
+ Topic 200:
+ supervision community release post mail damage box destruction explosives parking meters apparatus civil hate rights
+ Topic 201:
+ auto semi recovered grand officer police car motor camper detention device failure extortion exposure explosives
+ Topic 202:
+ bb gun breaking windows mischief malicious establishment robbery entertainment entry exposure engaging explosives exp
+ losive exploitation
+ Topic 203:
+ causing death peace resisting injury unlawfully attempting taking evading officer collision run hit weapon great
+ Topic 203:                                                                                                 [741/1826]
+causing death peace resisting injury unlawfully attempting taking evading officer collision run hit weapon great
+Topic 204:
+cruelty willful child pornography physical interferring fireman escapes exploitation exhibiting executive evidence ev
+ading establishment estab
+Topic 205:
+pimping procurement mail damage box destruction explosives parking meters apparatus civil rights hate incl threat
+Topic 206:
+truant habitual mail damage box destruction explosives parking meters apparatus civil rights hate incl threat
+Topic 207:
+stolen miscellaneous checks computer bus plate license trailer non cellular cloned leave refusal attempted entry
+Topic 208:
+school teachers threats disturbance public trespass zone threatening dismissal entering campus student suspension nea
+r leave
+Topic 209:
+tab plate license theft hire force att knife switchblade establishment exploitation exhibiting executive evidence eva
+ding
+Topic 210:
+comm estab attempted robbery deadly dangerous zone explosive exploitation exhibiting executive evidence evading estab
+lishment escape
+Topic 211:
+container open alcohol purchase aerosol meeting public weapon vehicle building purpose female area injurious official
+Topic 212:
+false report alarm vehicle receive property escapes exploitation exhibiting executive evidence evading establishment
+estab zone
+Topic 213:
+firecrackers selling discharging aircraft possession occupied area injurious juveniles glue restricted lasers lights
+public offensive
+Topic 214:
+labor fraudulently obtaining money dispute state offense code trafficking related narcotics violation laundering judg
+e official
+Topic 215:
+desertion child pornography physical willful sexual ward employment harassing enroute engaging exhibiting executive e
+desertion child pornography physical willful sexual ward employment harassing enroute engaging exhibiting e[709/1826]
+vidence evading
+Topic 216:
+priors tools possession burglary derivative escapes explosive exploitation exhibiting executive evidence evading esta
+blishment estab zone
+Topic 217:
+dangerous weapon meeting attempting taking transfer open peace public registration robbery violation rape carjacking
+homicide
+Topic 218:
+ammunition prohibited poss person bomb armor penetrating silencer possession estab exhibiting executive evidence evad
+ing establishment
+Topic 219:
+throwing substance injurious highway passenger common freight carrier object area vehicle offensive discharging publi
+c water
+Topic 220:
+proper care minor parental animal attention encouraging use tobacco encourage products destitute selling barbituates
+purchasing
+Topic 221:
+apt heating hotel violation burglary construction unlawful transfer curfew injunction gang restrictions civil registr
+ation encounter
+Topic 222:
+emergency protective order violation court dv looting calls transfer phone restrictions state injunction gang civil
+Topic 223:
+crime report commission soliciting conceal withhold payment accepting evidence interception broadcast railroad fare l
+eave refusal
+Topic 224:
+bodily force estab robbery great att mayhem hospital injury escape rob rape forcible attempted carjacking
+Topic 225:
+agent force shoplifting hire att hospital escape jail assisting hospitalized prisoner destroying 200 lawful custody
+Topic 226:
+pandering procurement vacant building conviction prior bomb poss explosive exploitation exhibiting executive evidence
+ evading zone
+Topic 227:
+evading zone                                                                                              [678/1826]
+Topic 227:
+intent poss deadly carrying commit felony bomb silencer zone evading explosive exploitation exhibiting executive evid
+ence
+Topic 228:
+red heed siren light failure rental return addict register narcotics comply regulations materials hazardous entering
+Topic 229:
+act lewd vio schoolyard child trafficking base engaging solicits sales cocaine encouraging explosive exploitation exh
+ibiting
+Topic 230:
+dumping offensive matter hazardous materials unauthorized locatn area injurious discharging location public substance
+depositing aircraft
+Topic 231:
+computer copying damaging accessing trade secrets unauthorized possession hazardous locatn speakers loud location dum
+ping use
+Topic 232:
+switchblade possession knife derivative device explosive destructive materials zone school lab drug abortion false ex
+tortion
+Topic 233:
+syringe needle hypodermic possession derivative device explosive destructive materials zone lab school drug cruelty e
+ngaging
+Topic 234:
+child abandonment abuse exploitation presence drunk concealment removal consent immoral acts willful provide ward emp
+loyment
+Topic 235:
+gas tear poss weapon electrical interfering lines bomb meeting silencer attempting taking open transfer guide
+Topic 236:
+access card possession stolen derivative device explosive lost destructive materials vehicle zone abandonment cat dog
+Topic 237:
+50 number serial drunk roll known 200 400 satellite presence telephone immoral acts months fiduciary
+Topic 238:
+discharge firearm negligent fireworks crowd throw inhabited dwelling silencer controlled entertainment evading exhibi
+ting encouraging executive
+discharge firearm negligent fireworks crowd throw inhabited dwelling silencer controlled entertainment evad[647/1826]
+ting encouraging executive
+Topic 239:
+dog stray vicious barking guide interfering cat abandonment fighting attending owning fight electrical lines animal
+Topic 240:
+abuse pornography child exploitation aircraft discharging occupied government selling public lights lasers trespass i
+njurious area
+Topic 241:
+opium derivative sale visiting smoked drugs used premise maintaining encouraging exploitation exhibiting executive ev
+idence evading
+Topic 242:
+highway 100 ft graffiti vandalism injurious government public chemical noxious area discharging caustic offensive tre
+spass
+Topic 243:
+establishment strongarm robbery commercial zone estab explosives explosive exploitation exhibiting executive evidence
+ evading escapes extortion
+Topic 244:
+department corrections enroute encourage establishment exposure explosives explosive exploitation exhibiting executiv
+e evidence evading estab encouraging
+Topic 245:
+placing trash street wife house rob keeping disorderly bank bodily estab exhibiting executive evidence evading
+Topic 246:
+property disturbance leased destruction explosives school private destroying carrier jail defraud insured insurer mar
+king terrorizing
+Topic 247:
+restraining order notification service zone establishment explosives explosive exploitation exhibiting executive evid
+ence evading escapes estab
+Topic 248:
+trailer mobile home stolen interferring fireman schoolyard vio trafficking offense base related narcotics sales addic
+t
+Topic 249:
+strangulation suicide drowning estab explosives explosive exploitation exhibiting executive evidence evading establis
+hment escapes extortion escapee
+strangulation suicide drowning estab explosives explosive exploitation exhibiting executive evidence evadin[616/1826]
+hment escapes extortion escapee
+Topic 250:
+alarm apparatus damage mail grabbing box possess destruction device use code meters parking rights hate
+Topic 251:
+juvenile intoxicated escapee victim violator parole suspect zone explosive exploitation exhibiting executive evidence
+ evading establishment
+Topic 252:
+atm robbery force att weapon meeting attempting escape taking transfer hospital peace open registration jail
+Topic 253:
+police permit interferring violation evading officer municipal broadcast interception bombing sniping crime commit bi
+cycle semi
+Topic 254:
+home camper car motor house mobile keeper inmate recovered vehicle wife keeping disorderly placing witness
+Topic 255:
+possess bring grounds school weapon disturbance grabbing public trespass zone device use code threatening near
+Topic 256:
+firearm marks aircraft discharging altered zone occupied transfer restrictions felony mask wearing carrying school co
+mmit
+Topic 257:
+instrument sharp written rape forcible warehouse estab explosives explosive exploitation exhibiting executive evidenc
+e evading establishment
+Topic 258:
+peeping tom mail damage box destruction explosives parking meters apparatus civil rights hate incl threat
+Topic 259:
+statute federal violation transfer restrictions court injunction gang civil curfew heating dv sidewalk labor hotel
+Topic 260:
+locked vehicle petty attempted grand prostitute pursesnatch pickpocket establishment explosive exploitation exhibitin
+g executive evidence evading
+Topic 261:
+cellular non cloned phone booth stolen possession court clone telecommunication incl dv services order violation
+Topic 262:
+jumping suicide drowning zone explosives explosive exploitation exhibiting executive evidence evading establishment e
+Topic 262:                                                                                                 [585/1826]
+jumping suicide drowning zone explosives explosive exploitation exhibiting executive evidence evading establishment e
+stab escapes extortion
+Topic 263:
+parole officer enroute search violator resist force deadly estab explosive exploitation exhibiting executive evidence
+ evading
+Topic 264:
+transportaion explosives illegal controlled substance destruction mail damage box solicitations charitable meters par
+king defraud insurer
+Topic 265:
+solicits act prostitution lewd ingestion attempted zone establishment explosive exploitation exhibiting executive evi
+dence evading estab
+Topic 266:
+marijuana sale evading death injury fare payment railroad collision run hit incl telecommunication clone great
+Topic 267:
+rock base sale cocaine kidnapping explosive exploitation exhibiting executive evidence evading establishment estab zo
+ne explosives
+Topic 268:
+package suspicious possibly auto act aggravated advertising distributors fax unsolicited handbill distribution access
+ing damaging escape
+Topic 269:
+prostitute grand theft known utility establishment explosive exploitation exhibiting executive evidence evading estab
+ exposure escapes
+Topic 270:
+manufacture weapon assault sale possession meeting taking attempting transfer open peace public hire registration res
+trictions
+Topic 271:
+placard disabled violation vehicle transfer restrictions court injunction gang civil curfew heating dv sidewalk hotel
+Topic 272:
+possessing firearm meeting open public weapon offenses justice government trespass threatening private graffiti offic
+ial building
+Topic 273:
+perjury keeper inmate house keeping disorderly interfering electrical lines gas guide dog hazardous materials unautho
+Topic 273:                                                                                                 [554/1826]
+perjury keeper inmate house keeping disorderly interfering electrical lines gas guide dog hazardous materials unautho
+rized
+Topic 274:
+cultivating planting marijuana peyote aircraft discharging occupied selling lights lasers glue restricted juveniles t
+aking reformatory
+Topic 275:
+related dv court offense order conduct scene seizing firearms trafficking money violation narcotics calls phone
+Topic 276:
+establishment massage comm weapon robbery zone escapes exploitation exhibiting executive evidence evading estab escap
+e escapee
+Topic 277:
+electronics possession stolen derivative lost device explosive destructive materials vehicle zone apartment safe shar
+p rape
+Topic 278:
+commercial establishment weapon building robbery arson gun knife zone explosives explosive exploitation exhibiting ex
+ecutive evidence
+Topic 279:
+sidewalk spitting permit sales violation base cocaine zone estab exploitation exhibiting executive evidence evading e
+stablishment
+Topic 280:
+services utility clone telecommunication incl phone damage civil rights hate mail threat box crimes destruction
+Topic 281:
+fictitious phone calls court booth dv order telecommunication clone incl violation services firearms seizing scene
+Topic 282:
+laceration suicide drowning brookers agents vio schoolyard base sales cocaine permit exhibiting establishment executi
+ve evidence
+Topic 283:
+possession checks chemical computer articles remove zone purchase aerosol caustic machine barbituates container schoo
+l mask
+Topic 284:
+caretaker dependent elder adult embezzlement victim unlawfully causing escape jail assisting prisoner hospitalized de
+stroying hospital
+caretaker dependent elder adult embezzlement victim unlawfully causing escape jail assisting prisoner hospi[523/1826]
+stroying hospital
+Topic 285:
+identification altered remove articles firearm vin alter switch zone escapes exhibiting executive evidence evading es
+tablishment
+Topic 286:
+permit violation entertainment massage advertising distributors sidewalk cabaret dancehall transfer restrictions sale
+s court injunction gang
+Topic 287:
+theft booth animals boat roll drunk 400 cards credit written 200 phone tab instrument secrets
+Topic 288:
+provide failure child return rental addict register parents narcotics hazardous materials regulations comply pornogra
+phy offense
+Topic 289:
+unlawful entry disguise mask wearing purpose retailer witness dissuading stamps food use leave refusal offender
+Topic 290:
+unlawful entry victim adult bldg apt evading explosives explosive exploitation exhibiting executive evidence establis
+hment extortion
+Topic 291:
+forcible entry burglary att apartment leave refusal house offender bus grounds sex school crime commit
+Topic 292:
+visit house prostitution solicits inmate keeper wife disorderly keeping placing att forcible dangerous gun evading
+Topic 293:
+witness dissuading threatening unlawful public school government justice offenses official private graffiti area inju
+rious discharging
+Topic 294:
+embezzlement general leased agents brookers private official collector carrier employee elder dependent adult marking
+ judge
+Topic 295:
+station service robbery dangerous deadly gun carrying knife intent scalping tickets evading escapee establishment evi
+dence
+Topic 296:
+registration evidence vehicle false transfer conceal withhold accepting payment crime weapon violation fare restricti
+Topic 296:                                                                                                 [492/1826]
+registration evidence vehicle false transfer conceal withhold accepting payment crime weapon violation fare restricti
+ons juror
+Topic 297:
+infractions public crimes transit justice offenses government trespass school threatening meeting rights hate civil p
+rivate
+Topic 298:
+commit drug administering carrying intent offenses specific felony loaded sex justice deadly public near presence
+Topic 299:
+operating taxi permit cabaret dancehall overcharging fare sidewalk sales materials hazardous dealer second hand peddl
+er
+Topic 300:
+felon convicted aid harbor concealed weapon exhibiting threating abandonment barking dog cat animal attention fightin
+g
+accuracy: 0.870366455782
+precision: 0.85515895327
+recall: 0.760769994784
