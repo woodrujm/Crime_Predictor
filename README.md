@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The motivation for this project stems from the San Francisco public database of police reports. The database consists of information on every logged police report ranging from 2003 to 2017. The information includes things like resolution, category, location, and description. I became interested in predicting the resolution of serious crimes in San Francisco. I defined serious crimes as must felony offenses and, in particular, violent crimes. The reduction of the original two million plus rows can be found in the "clean_data.py" file. Essentially, I decided to reduce the data down to, what I considered, serious crimes and crimes that were not resolved at the scene of the incident.
+The motivation for this project stems from the San Francisco public database of police reports. The database consists of information on every logged police report ranging from 2003 to 2017. The information includes things like resolution, category, location, and description. I became interested in predicting the resolution of serious crimes in San Francisco. I defined serious crimes as felony offenses and violent crimes. The reduction of the original two million plus rows can be found in the "clean_data.py" file. Essentially, I decided to reduce the data down to, what I considered, serious crimes and crimes that were not resolved at the scene of the incident.
 
 ## Exploratory Data Analysis
 
